@@ -1,0 +1,49 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/book_social_network
+        username: username
+        password: password
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: validate
+            database-platform: org.hibernate.dialect.PostgreSQLDialect
+    flyway:
+
+        show-sql: false
+        properties:
+            hibernate:
+                format_sql: true  # Adjusted to correct format for Hibernate property
+        baseline-on-migrate: true
+        enabled: true
+        user: postgres
+        password: password
+        baseline-description: "init"
+        baseline-version: 0
+    mail:
+        host: localhost
+        port: 1025
+        username: book
+        password: book
+        properties:
+            mail:
+                smtp:
+                    trust: "*"
+                auth: true
+                starttls:
+                    enable: true
+                connectiontimeout: 5000  # Corrected property name
+                timeout: 3000
+                writetimeout: 5000
+
+application:
+    security:
+        jwt:
+            secret-key: F66CCD5C4DA7913B137DE8543FCD5
+            expiration: 8640000
+    mailing:
+        frontend:
+            activation-url: http://localhost:4200/activation-account
+
+server:
+    port: 8088
